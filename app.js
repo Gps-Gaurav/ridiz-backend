@@ -11,7 +11,7 @@ const mapsRoutes = require('./routes/maps.routes');
 const rideRoutes = require('./routes/ride.routes');
 const path = require('path');
 connectToDb();
-const _dirname = path.resolve();
+
 
 const corsOptions = {
     origin:'http://localhost:5173',
@@ -28,11 +28,6 @@ app.use('/users', userRoutes);
 app.use('/captains', captainRoutes);
 app.use('/maps', mapsRoutes);
 app.use('/rides', rideRoutes);
-
-app.use(express.static(path.join(_dirname, "/frontend/dist")))
-app.get('*', (_,res)=>{
-    res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
-})
 
 
 module.exports = app;
